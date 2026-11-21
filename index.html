@@ -16,11 +16,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
-  :root{--o:#e08a52;--b:#5f93cf;--red:#cb3b38;
+  :root{--o:#e08a52;--b:#5f93cf;--red:#cb3b38;--remi:#b0576f;
     --bg-a:#121119;--bg-b:#09090c;--txt:#f3f0ea;--mut:#a7a3ab;--wm:#cfcbd3;--links:#8f8b93;
     --net:rgba(255,255,255,.07);--xb1:#34343f;--xb2:#43434f;
     --panel:rgba(18,17,24,.74);--panel-bd:rgba(255,255,255,.08);--hair:rgba(255,255,255,.08)}
-  body.light{--bg-a:#ffffff;--bg-b:#f4f5f7;--txt:#201d26;--mut:#6b6572;--wm:#504955;--links:#6f6975;
+  body.light{--bg-a:#ffffff;--bg-b:#f4f5f7;--txt:#201d26;--mut:#6b6572;--wm:#504955;--links:#6f6975;--remi:#7a2e4a;
     --net:rgba(33,29,36,.09);--xb1:#3c3742;--xb2:#6a6372;
     --panel:rgba(255,255,255,.85);--panel-bd:rgba(33,29,36,.1);--hair:rgba(33,29,36,.1)}
   body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg-b);color:var(--txt);overflow:hidden}
@@ -31,7 +31,7 @@
   /* nav */
   nav{position:fixed;top:0;left:0;right:0;z-index:20;max-width:1200px;margin:0 auto;padding:22px 48px;
     display:flex;align-items:center;justify-content:space-between}
-  .brand{display:flex;align-items:center;gap:11px;border-radius:999px;padding:8px 20px 8px 11px;transition:background .25s}
+  .brand{display:flex;align-items:center;gap:11px;border-radius:999px;padding:8px 20px 8px 11px;transition:background .25s;cursor:pointer}
   body:not(.light) .brand{background:#fff;--xb1:#574e5b;--xb2:#6b6472;--wm:#3f3a45}
   .brand .mk{width:36px;height:36px;flex:none}
   .wm{font-weight:700;font-size:18px;letter-spacing:-.2px;color:var(--wm)}
@@ -60,7 +60,7 @@
   .cta2{background:transparent;border:0;color:var(--mut);font-family:inherit;font-weight:600;font-size:15.5px;cursor:pointer}
   .cta2:hover{color:var(--txt)}
   .note{margin-top:34px;padding-top:20px;border-top:1px solid var(--hair);font-size:14px;color:var(--mut);max-width:38em}
-  .note b{color:var(--txt);font-weight:700}
+  .note b{color:var(--remi);font-weight:700}
   .stage{position:relative;min-height:470px}
   .xsvg{position:absolute;top:50%;left:50%;transform:translate(-50%,-56%);width:100%;max-width:410px;z-index:2}
   .term{position:absolute;right:0;bottom:4px;width:300px;z-index:1;background:#1b1a23;
@@ -81,7 +81,7 @@
   .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
   .pillar{border-top:1px solid var(--hair);padding-top:16px}
   .pillar .no{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--o);font-weight:500;display:block;margin-bottom:10px;letter-spacing:.05em}
-  .pillar h3{font-size:17px;font-weight:700;margin-bottom:8px;color:var(--txt)}
+  .pillar h3{font-size:17px;font-weight:700;margin-bottom:8px;color:var(--red)}
   .why .pillar h3{color:var(--red)}
   .pillar p{font-size:14.5px;color:var(--mut);line-height:1.5}
   .op{display:inline-flex;align-items:center;gap:9px;font-size:14px;color:var(--mut);margin-bottom:22px}
@@ -89,6 +89,8 @@
   @keyframes pulseLive{0%,100%{opacity:1}50%{opacity:.4}}
   .lk-accent{color:var(--red);font-weight:600;font-size:15.5px;text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
   .lk-accent:hover{text-decoration:underline}
+  .remi .lk-accent{color:var(--red)}
+  .remi .lk-accent .rm{color:var(--remi)}
   /* carrusel REMI */
   .panel.remi{display:block;padding:0}
   .rcar{position:relative;width:100%;height:100vh}
@@ -103,12 +105,25 @@
   .rcap{font-size:15px;color:var(--mut);text-align:center;font-weight:500;max-width:46ch}
   .rdots{position:absolute;left:50%;bottom:78px;transform:translateX(-50%);display:flex;gap:7px;z-index:8}
   .rdots button{width:7px;height:7px;border-radius:50%;border:0;background:var(--hair);cursor:pointer;padding:0;transition:.2s}
-  .rdots button.on{background:var(--red);width:20px;border-radius:4px}
+  .rdots button.on{background:var(--remi);width:20px;border-radius:4px}
   .rarr{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;
     border:1px solid var(--hair);background:var(--bg-a);color:var(--mut);cursor:pointer;z-index:8;
     display:flex;align-items:center;justify-content:center;font-size:22px;line-height:1}
   .rarr.prev{left:28px}.rarr.next{right:28px}
   .rarr:hover{color:var(--txt);border-color:var(--txt)}
+  /* REMI intro: logo + Phil */
+  .remi-intro{width:100%;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:20px}
+  .rlogo{width:72px;margin-bottom:18px}
+  .ri-phil{position:relative;display:flex;align-items:center;justify-content:center}
+  .rglow{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(176,87,111,.2),transparent 62%);pointer-events:none;z-index:0}
+  .rphil{width:100%;max-width:96px;overflow:visible;position:relative;z-index:1}
+  .ph-cuerpo{animation:float 3.6s ease-in-out infinite}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+  .ph-saluda{transform-box:view-box;transform-origin:162px 146px;animation:wave 1.3s ease-in-out infinite}
+  @keyframes wave{0%,100%{transform:rotate(2deg)}50%{transform:rotate(-15deg)}}
+  .ph-ojos{transform-box:view-box;transform-origin:center 92px;animation:philblink 4.2s infinite}
+  @keyframes philblink{0%,93%,100%{transform:scaleY(1)}96%{transform:scaleY(.12)}}
+  @media(max-width:860px){.remi-intro{grid-template-columns:1fr;gap:10px}.ri-phil{order:-1;justify-content:flex-start}.rphil{max-width:104px}.rglow{width:200px;height:200px}}
   /* lightbox */
   .lb{position:fixed;inset:0;z-index:60;display:none;align-items:center;justify-content:center;
     background:rgba(10,9,13,.9);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);padding:5vh 20px}
@@ -123,19 +138,21 @@
     background:rgba(255,255,255,.15);color:#fff;font-size:26px;cursor:pointer;z-index:62;display:flex;align-items:center;justify-content:center}
   .lb-nav.p{left:18px}.lb-nav.n{right:18px}.lb-nav:hover{background:rgba(255,255,255,.28)}
   /* footer */
-  .foot{flex-direction:column;justify-content:center;text-align:center}
+  .foot{flex-direction:column;align-items:stretch;justify-content:flex-start;text-align:center;padding:0}
+  .contact-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:92px 24px 20px}
   .contact .cta{margin-top:8px}
-  .fbar{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;gap:20px;padding:20px 48px;border-top:1px solid var(--hair)}
+  .footwrap{display:flex;flex-direction:column;align-items:center;padding-bottom:26px}
+  .totop{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--b);background:transparent;color:var(--b);
+    cursor:pointer;display:flex;align-items:center;justify-content:center;flex:none;margin-bottom:20px;animation:totop 2.2s ease-in-out infinite}
+  .totop:hover{background:var(--b);color:#fff;animation:none}.totop svg{width:16px;height:16px}
+  @keyframes totop{0%,100%{box-shadow:0 0 0 0 rgba(95,147,207,.5)}70%{box-shadow:0 0 0 9px rgba(95,147,207,0)}}
+  .fbar{width:100%;border-top:1px solid var(--hair);padding:22px 24px 0;display:flex;flex-direction:column;align-items:center;gap:10px}
   .fbar .wmx{display:flex;align-items:center;gap:9px}
   .fbar .wmx .mk{width:24px;height:24px}
   .fbar .wmx .wm{font-size:15px}
-  .flinks{margin:0 auto;display:flex;gap:20px}
+  .flinks{display:flex;gap:20px}
   .flinks a{color:var(--links);text-decoration:none;font-size:14px;font-weight:500;cursor:pointer}
   .fcopy{color:var(--mut);font-size:12.5px}
-  .totop{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--b);background:transparent;color:var(--b);
-    cursor:pointer;display:flex;align-items:center;justify-content:center;flex:none;animation:totop 2.2s ease-in-out infinite}
-  .totop:hover{background:var(--b);color:#fff;animation:none}.totop svg{width:16px;height:16px}
-  @keyframes totop{0%,100%{box-shadow:0 0 0 0 rgba(95,147,207,.5)}70%{box-shadow:0 0 0 9px rgba(95,147,207,0)}}
   /* scroll cue */
   .scrollcue{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);width:42px;height:42px;border-radius:50%;
     border:1px solid var(--hair);background:var(--bg-a);color:var(--mut);display:flex;align-items:center;justify-content:center;
@@ -157,15 +174,33 @@
     .rarr{display:none}
     .rfig img{max-height:52vh}
     .rslide .inner .lead{font-size:15px}
-    .fbar{flex-wrap:wrap;gap:10px 16px;padding:16px 20px}
-    .flinks{order:3;width:100%;justify-content:center;margin:0}
+    .fbar{padding:18px 20px 0}
     .fcopy{font-size:11.5px}
+  }
+  /* pantallas de poca altura (iPad horizontal, laptops 768/864/900) */
+  @media(max-height:905px){
+    .panel{height:auto;min-height:100vh}
+    .panel.hero,.panel.sec{align-items:flex-start}
+    .panel.hero .wrap{padding-top:92px;padding-bottom:46px}
+    .panel.sec{padding:92px 48px 46px}
+    .contact-wrap{padding-top:84px}
+    .rcar{height:auto;min-height:100vh}
+    h1{font-size:clamp(28px,4.8vw,50px);margin-bottom:18px}
+    .sub{font-size:16px;margin-bottom:22px}
+    .note{margin-top:20px;padding-top:14px}
+    .sec h2{font-size:clamp(23px,3.4vw,34px);margin-bottom:22px}
+    .pillars{gap:18px}
+    .xsvg{max-width:290px}
+    .term{width:250px}
+    .stage{min-height:340px}
+    .rslide{padding:90px 48px 72px}
+    .rfig img{max-height:50vh}
   }
 </style>
 </head>
 <body class="light">
   <nav>
-    <div class="brand"><svg class="mk" id="navmk" viewBox="0 0 40 40"></svg><div class="wm">Xetaware<span>Labs</span></div></div>
+    <div class="brand" data-go="0" aria-label="Ir al inicio"><svg class="mk" id="navmk" viewBox="0 0 40 40"></svg><div class="wm">Xetaware<span>Labs</span></div></div>
     <div class="nright">
       <div class="nlinks"><a data-go="1">Enfoque</a><a data-go="2">REMI</a><a data-go="3">Nosotros</a><a data-go="4" class="q">Hablemos</a></div>
       <button class="tgl" id="tgl" aria-label="Cambiar tema"></button>
@@ -181,8 +216,7 @@
           <h1>Donde la experiencia y la creatividad se vuelven ingeniería y automatización.</h1>
           <p class="sub">Xetaware Labs diseña y opera sistemas a la medida para industrias reguladas —con una arquitectura pensada para la trazabilidad, el cumplimiento y la precisión que otros dejan al final.</p>
           <div class="ctas">
-            <button class="cta">Hablemos de tu operación</button>
-            <button class="cta2">Conoce REMI</button>
+            <button class="cta" data-go="4">Hablemos de tu operación</button>
           </div>
           <div class="note">Creadores de <b>REMI</b>, la aplicación de inventario para distribuidoras farmacéuticas basada en las mejores prácticas de Industry 4.0.</div>
         </div>
@@ -208,13 +242,71 @@
     <section class="panel remi">
       <div class="rcar" id="rcar">
         <div class="rslide on">
-          <div class="inner">
-            <div class="ey"><i></i>Nuestro producto</div>
-            <h2><span style="color:var(--red)">REMI</span> — tu inventario, siempre al día.</h2>
-            <p class="lead" style="margin-bottom:16px">Un sistema de inventario para distribuidoras farmacéuticas que se mantiene al día a partir de imágenes de tus documentos —sin captura manual—, controla caducidades y sustancias controladas, y planea y monitorea el reparto en vivo.</p>
-            <p class="lead">Lo que normalmente exige capturar a mano, lectores caros y un sistema aparte de logística, REMI lo hace con el teléfono que tu gente ya trae —y sin perder el rastro cuando el producto sale por la puerta.</p>
-            <div class="op"><i></i> En operación hoy, con una distribuidora farmacéutica real.</div><br>
-            <a class="lk-accent" id="remiGo">Ver REMI en acción <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <div class="remi-intro">
+            <div class="ri-text">
+              <div class="ey"><i></i>Nuestro producto</div>
+              <div class="rlogo">
+                <svg viewBox="0 0 172 84" role="img" aria-label="REMI" style="display:block;height:auto">
+                  <defs>
+                    <linearGradient id="lr-re" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8c3a59"/><stop offset=".5" stop-color="#732c47"/><stop offset="1" stop-color="#521c31"/></linearGradient>
+                    <linearGradient id="lr-mi" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e7e4e8"/></linearGradient>
+                    <radialGradient id="lr-hi" cx=".3" cy=".2" r=".8"><stop offset="0" stop-color="#a94f6d" stop-opacity=".85"/><stop offset="1" stop-color="#a94f6d" stop-opacity="0"/></radialGradient>
+                    <linearGradient id="lr-gl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity=".5"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></linearGradient>
+                    <filter id="lr-so" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="2.5" stdDeviation="3.2" flood-color="#2a0f1e" flood-opacity=".38"/></filter>
+                    <clipPath id="lr-cp"><rect x="4" y="6" width="164" height="72" rx="36"/></clipPath>
+                    <clipPath id="lr-cr"><rect x="4" y="6" width="82" height="72"/></clipPath>
+                    <clipPath id="lr-cm"><rect x="86" y="6" width="82" height="72"/></clipPath>
+                  </defs>
+                  <g filter="url(#lr-so)">
+                    <g clip-path="url(#lr-cp)">
+                      <g clip-path="url(#lr-cr)"><rect x="4" y="6" width="164" height="72" rx="36" fill="url(#lr-re)"/><ellipse cx="34" cy="26" rx="46" ry="30" fill="url(#lr-hi)"/></g>
+                      <g clip-path="url(#lr-cm)"><rect x="4" y="6" width="164" height="72" rx="36" fill="url(#lr-mi)"/><rect x="86" y="6" width="82" height="72" fill="none" stroke="#7a2e4a" stroke-opacity=".26" stroke-width="2"/></g>
+                      <rect x="84.2" y="6" width="1.8" height="72" fill="#3f1527" fill-opacity=".35"/><rect x="86" y="6" width="1.2" height="72" fill="#ffffff" fill-opacity=".45"/><ellipse cx="86" cy="-12" rx="92" ry="40" fill="url(#lr-gl)"/>
+                    </g>
+                    <rect x="4" y="6" width="164" height="72" rx="36" fill="none" stroke="#5a2037" stroke-opacity=".22" stroke-width="1.4"/>
+                    <text x="45" y="54" text-anchor="middle" font-family="'Plus Jakarta Sans',system-ui,sans-serif" font-size="40" font-weight="800" letter-spacing="-1" fill="#ffffff">RE</text>
+                    <text x="127" y="54" text-anchor="middle" font-family="'Plus Jakarta Sans',system-ui,sans-serif" font-size="40" font-weight="800" letter-spacing="-1" fill="#7a2e4a">MI</text>
+                  </g>
+                </svg>
+              </div>
+              <h2 style="color:var(--red)">Tu inventario, siempre al día.</h2>
+              <p class="lead" style="margin-bottom:16px">Un sistema de inventario para distribuidoras farmacéuticas que se mantiene al día a partir de imágenes de tus documentos —sin captura manual—, controla caducidades y sustancias controladas, y planea y monitorea el reparto en vivo.</p>
+              <p class="lead">Lo que normalmente exige capturar a mano, lectores caros y un sistema aparte de logística, REMI lo hace con el teléfono que tu gente ya trae —y sin perder el rastro cuando el producto sale por la puerta.</p>
+              <div class="op" style="margin-top:14px"><i></i> En operación hoy.</div><br>
+              <a class="lk-accent" id="remiGo">Ver <span class="rm">REMI</span> en acción <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </div>
+            <div class="ri-phil">
+              <div class="rglow"></div>
+              <svg class="rphil" viewBox="0 0 240 330" role="img" aria-label="Phil, el asistente de REMI">
+                <defs>
+                  <clipPath id="ph-pT"><rect x="80" y="40" width="80" height="212" rx="40"/></clipPath>
+                  <clipPath id="ph-aT"><path d="M80,146 L80,80 A40,40 0 0 1 160,80 L160,146 Z"/></clipPath>
+                  <clipPath id="ph-bT"><path d="M80,146 L160,146 L160,212 A40,40 0 0 1 80,212 Z"/></clipPath>
+                  <linearGradient id="ph-c4" x1=".2" y1="0" x2=".4" y2="1"><stop offset="0" stop-color="#9a4c68"/><stop offset=".5" stop-color="#7a2e4a"/><stop offset="1" stop-color="#511c33"/></linearGradient>
+                  <linearGradient id="ph-w4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e4dfe6"/></linearGradient>
+                  <linearGradient id="ph-lm" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#511c33"/><stop offset=".5" stop-color="#6a2742"/><stop offset="1" stop-color="#45182b"/></linearGradient>
+                  <linearGradient id="ph-eShade" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#000" stop-opacity=".4"/><stop offset=".22" stop-color="#000" stop-opacity="0"/><stop offset=".72" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".4"/></linearGradient>
+                  <filter id="ph-bS" x="-70%" y="-70%" width="240%" height="240%"><feGaussianBlur stdDeviation="3.5"/></filter>
+                  <filter id="ph-bB" x="-70%" y="-70%" width="240%" height="240%"><feGaussianBlur stdDeviation="7"/></filter>
+                </defs>
+                <ellipse cx="120" cy="314" rx="48" ry="9" fill="#3a3238" opacity=".18" filter="url(#ph-bB)"/>
+                <g class="ph-cuerpo">
+                  <g stroke="url(#ph-lm)" stroke-width="6.5" stroke-linecap="round" fill="none"><path d="M110,250 L104,302"/><path d="M130,250 L136,302"/></g>
+                  <ellipse cx="102" cy="304" rx="9" ry="5.5" fill="#511c33"/><ellipse cx="138" cy="304" rx="9" ry="5.5" fill="#511c33"/>
+                  <path d="M82,152 L60,188" fill="none" stroke="url(#ph-lm)" stroke-width="6.5" stroke-linecap="round"/><circle cx="58" cy="190" r="7" fill="#64263f"/>
+                  <g class="ph-saluda"><path d="M158,140 L190,102" fill="none" stroke="url(#ph-lm)" stroke-width="6.5" stroke-linecap="round"/><circle cx="193" cy="98" r="7" fill="#64263f"/></g>
+                  <g clip-path="url(#ph-aT)"><rect x="80" y="40" width="80" height="106" fill="url(#ph-w4)"/><ellipse cx="105" cy="58" rx="28" ry="22" fill="#fff" opacity=".75" filter="url(#ph-bS)"/></g>
+                  <g clip-path="url(#ph-bT)"><rect x="80" y="40" width="80" height="212" fill="url(#ph-c4)"/><ellipse cx="104" cy="195" rx="14" ry="56" fill="#fff" opacity=".28" filter="url(#ph-bS)"/><ellipse cx="120" cy="250" rx="42" ry="15" fill="#330f20" opacity=".32" filter="url(#ph-bB)"/><ellipse cx="100" cy="172" rx="4.5" ry="14" fill="#fff" opacity=".7"/></g>
+                  <g clip-path="url(#ph-pT)"><rect x="80" y="40" width="80" height="212" fill="url(#ph-eShade)" opacity=".42"/><rect x="80" y="145" width="80" height="2.1" fill="#330f20" fill-opacity=".4"/><rect x="80" y="147.1" width="80" height="1.3" fill="#fff" fill-opacity=".5"/><ellipse cx="104" cy="22" rx="50" ry="28" fill="#fff" opacity=".32"/></g>
+                  <rect x="80" y="40" width="80" height="212" rx="40" fill="none" stroke="#cdb3bf" stroke-width="1.1"/>
+                  <ellipse cx="97" cy="104" rx="7" ry="4.5" fill="#c56f68" opacity=".25" filter="url(#ph-bS)"/><ellipse cx="143" cy="104" rx="7" ry="4.5" fill="#c56f68" opacity=".25" filter="url(#ph-bS)"/>
+                  <g class="ph-ojos"><circle cx="106" cy="92" r="6" fill="#322931"/><circle cx="134" cy="92" r="6" fill="#322931"/></g>
+                  <circle cx="108" cy="89.6" r="1.9" fill="#fff"/><circle cx="136" cy="89.6" r="1.9" fill="#fff"/>
+                  <path d="M107,110 Q120,121 133,110" fill="none" stroke="#322931" stroke-width="4.2" stroke-linecap="round"/>
+                  <g><rect x="92" y="79" width="27" height="24" rx="8" fill="#eaf1f4" fill-opacity=".24"/><rect x="121" y="79" width="27" height="24" rx="8" fill="#eaf1f4" fill-opacity=".24"/><rect x="92" y="79" width="27" height="24" rx="8" fill="none" stroke="#511c33" stroke-width="3.1"/><rect x="121" y="79" width="27" height="24" rx="8" fill="none" stroke="#511c33" stroke-width="3.1"/><path d="M119,86 q3.5,-3 7,0" fill="none" stroke="#511c33" stroke-width="3.1" stroke-linecap="round"/><path d="M92,84 L81,80" fill="none" stroke="#511c33" stroke-width="3.1" stroke-linecap="round"/><path d="M96,99 L112,82" stroke="#fff" stroke-width="2.2" stroke-linecap="round" opacity=".7"/></g>
+                </g>
+              </svg>
+            </div>
           </div>
         </div>
       </div>
@@ -236,17 +328,21 @@
     </section>
 
     <section class="panel foot">
-      <div class="contact">
-        <div class="ey" style="justify-content:center"><i></i>Hablemos</div>
-        <h2 style="margin:0 auto 16px">¿Tienes una operación que no puede fallar?</h2>
-        <p class="lead" style="margin:0 auto 26px;max-width:36em">Cuéntanos qué te está costando tiempo o exactitud. Hacemos el número contigo antes de que decidas nada.</p>
-        <button class="cta">hola@xetawarelabs.com</button>
+      <div class="contact-wrap">
+        <div class="contact">
+          <div class="ey" style="justify-content:center"><i></i>Hablemos</div>
+          <h2 style="margin:0 auto 16px">¿Tienes una operación que no puede fallar?</h2>
+          <p class="lead" style="margin:0 auto 26px;max-width:36em">Cuéntanos qué te está costando tiempo o exactitud. Hacemos el número contigo antes de que decidas nada.</p>
+          <a class="cta" href="mailto:hola@xetawarelabs.com?subject=Hablemos%20%E2%80%94%20Xetaware%20Labs" style="text-decoration:none;display:inline-block">hola@xetawarelabs.com</a>
+        </div>
       </div>
-      <div class="fbar">
-        <div class="wmx"><svg class="mk" id="footmk" viewBox="0 0 40 40"></svg><div class="wm">Xetaware<span>Labs</span></div></div>
-        <div class="flinks"><a data-go="1">Enfoque</a><a data-go="2">REMI</a><a data-go="3">Nosotros</a></div>
-        <div class="fcopy">© 2026 Xetaware Labs · Monterrey, México</div>
+      <div class="footwrap">
         <button class="totop" id="totop" aria-label="Volver arriba"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6"/></svg></button>
+        <div class="fbar">
+          <div class="wmx"><svg class="mk" id="footmk" viewBox="0 0 40 40"></svg><div class="wm">Xetaware<span>Labs</span></div></div>
+          <div class="flinks"><a data-go="1">Enfoque</a><a data-go="2">REMI</a><a data-go="3">Nosotros</a></div>
+          <div class="fcopy">© 2026 Xetaware Labs · Monterrey, México</div>
+        </div>
       </div>
     </section>
   </div>
